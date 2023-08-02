@@ -20,6 +20,7 @@ def grafico_distribucion_siniestros_por_hora(data):
     plt.show()
 
 def grafico_tasa_supervivencia(data):
+    data['hora'] = pd.to_datetime(data['hora'])
     homicidios = data[data['causa'] == 'homicidio']['cantidad_victimas'].sum()
     lesiones = data[data['causa'] == 'lesiones']['cantidad_victimas'].sum()
     tasa_supervivencia = lesiones / (homicidios + lesiones) * 100
